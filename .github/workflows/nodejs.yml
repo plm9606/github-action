@@ -1,6 +1,14 @@
 name: Node CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - test
+    tags:
+      - v1
+    # 파일 path. default = all
+    # paths:
+    # - 'test/*'
 
 jobs:
   build:
@@ -9,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x, 12.x]
 
     steps:
     - uses: actions/checkout@v1
