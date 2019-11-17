@@ -1,5 +1,5 @@
-
 #!/bin/sh
+
 # set -eu
 
 if [[ -z "$SLACK_BOT_TOKEN" ]]; then
@@ -12,3 +12,4 @@ curl -X POST \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
      -d "$*" \
      https://slack.com/api/chat.postMessage
+     
