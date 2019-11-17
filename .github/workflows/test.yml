@@ -38,4 +38,5 @@ jobs: # job id 설정
           SLACK_USERNAME: mergeBot
           SLACK_COLOR: good
           SLACK_TITLE: Message
-          SLACK_MESSAGE: "한글 테스트"
+          SLACK_MESSAGE: "🎉      경           축      🎉\n성공적으로 PR이 머지되었습니다!🚀"
+          SLACK_ICON: http://postfiles3.naver.net/MjAxOTExMDRfMTQx/MDAxNTcyODc0NDUwOTE2.cN6BwZom6d1WoLtHrbMerXxjxQ4P-w6e_qqM4A7Z4iMg.bxYDpY2XSOpGTwLlCx2T1mSs7_jvgp2388wL-CNI-QIg.JPEG.alineom/IMG_6594.jpg?type=w773
