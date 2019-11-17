@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/plm9606/github-action/issues"
   },
-  "homepage": "https://github.com/plm9606/github-action#readme"
+  "homepage": "https://github.com/plm9606/github-action#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
+  }
 }
