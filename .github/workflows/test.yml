@@ -5,7 +5,7 @@ on:                                                                             
     branches:
       - test
 
-jobs:                                                                                 # job 설정
+jobs:                                                                                 # job id 설정
   build:                                                                              # job id
     runs-on: [ubuntu-latest]                                                          # job 가상환경 인스턴스
     steps:    
@@ -24,10 +24,17 @@ jobs:                                                                           
         run: npm install                                                              # run을 통한 스크립트 실행 
       - name: ✔ run jest
         uses: stefanoeb/jest-action@1.0.0                                             # uses를 통한 외부설정 가져오기
-      - name: ✔ Notify slack
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-        uses: pullreminders/slack-action@master
-        with:
-          args: '{\"channel\":\"GQ6BU15EJ\",\"text\":\"merged test branch \"}'
-        if: success()
+  slackNotification:                                                                  # 2번째 job
+    needs: [build]                                                                    # build job이 완료해야한다
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@master
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: 16team
+        SLACK_USERNAME: mergeBot
+        SLACK_COLOR: good
+        SLACK_TITLE: Message
+        SLACK_MESSAGE: '한글 테스트'
