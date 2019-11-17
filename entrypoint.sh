@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# set -eu
+ set -eu
 
 if [[ -z "$SLACK_BOT_TOKEN" ]]; then
   echo "Set the SLACK_BOT_TOKEN secret."
