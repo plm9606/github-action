@@ -8,7 +8,7 @@ jobs:
     - name: Hello world action step
       env:
         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: $plm9606/github-action@master
+      uses: plm9606/github-action@master
       with:
         who-to-greet: 'Mona the Octocat'
         args: '{\"channel\":\"GQ6BU15EJ\",\"text\":\"test 브랜치에 PR을 머지합니다.\"}'
