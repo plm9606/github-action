@@ -6,7 +6,7 @@ if [[ -z "$SLACK_BOT_TOKEN" ]]; then
   echo "Set the SLACK_BOT_TOKEN secret."
   exit 1
 fi
-
+echo "data is: $*"
 curl -X POST \
      -H "Content-type: application/json; charset=utf-8" \
      -H "Authorization: Bearer $SLACK_BOT_TOKEN" \
