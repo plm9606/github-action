@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     name: custom action
     steps:
-    - name: Hello world action step
-      env:
-        SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-      uses: plm9606/github-action@master
-      with:
-        args: '{\"channel\":\"GQ6BU15EJ\",\"text\":\"성공11111 \"}'
+      - name: Hello world action step
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+        uses: plm9606/github-action@master
+        with:
+          args: '{\"channel\":\"GQ6BU15EJ\",\"text\":\"성공 \"}'
