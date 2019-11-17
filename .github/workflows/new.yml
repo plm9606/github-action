@@ -11,7 +11,7 @@ jobs:
       uses: rtCamp/action-slack-notify@master
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL:16team
+        SLACK_CHANNEL: 16team
         SLACK_USERNAME: mergeBot
         SLACK_COLOR: good
         SLACK_TITLE: Message
