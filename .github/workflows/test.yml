@@ -9,8 +9,7 @@ jobs:
   build:
     runs-on: [ubuntu-latest]
     steps:
-      - uses: stefanoeb/jest-action@1.0.0
-      - name: jest
-        run: |
-          npm install
-          npm test
+      - name: npm install
+        run: npm install
+      - name: run jest
+        uses: stefanoeb/jest-action@1.0.0
