@@ -4,7 +4,7 @@
   "description": "github action을 활용한 CI/CD 학습",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
