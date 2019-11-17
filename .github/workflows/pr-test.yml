@@ -1,0 +1,20 @@
+name: PR test
+
+on: 
+  pull_request_review:
+    types: [submitted]
+    branches: 
+      - master
+      - develop
+
+jobs:
+  Check test:
+    name: Run Jest
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: npm install
+        run: npm install
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.0
