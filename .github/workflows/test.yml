@@ -1,40 +1,41 @@
-name: push test branch                                                               # workflow 이름
+name: push test branch # workflow 이름
 
-on:                                                                                  # 이벤트 감지
+on: # 이벤트 감지
   push:
     branches:
       - test
 
-jobs:                                                                                 # job id 설정
-  build:                                                                              # job id
-    runs-on: [ubuntu-latest]                                                          # job 가상환경 인스턴스
-    steps:    
-      - name: ✔ checkout sorce code
-        uses: actions/checkout@master                                                 # uses를 통한 외부 설정 가져오기(githun 공식 checkout 액션 사용): 레포지토리 소스 받아오기
-      - name: ✔ Cache node_modules
-        uses: actions/cache@v1.0.0                                                    # github cache 액션 사용
+jobs: # job id 설정
+  build: # job id
+    runs-on: [ubuntu-latest] # job 가상환경 인스턴스
+    steps:
+      - name: checkout sorce code
+        uses: actions/checkout@master # uses를 통한 외부 설정 가져오기(githun 공식 checkout 액션 사용): 레포지토리 소스 받아오기
+      - name: Cache node_modules
+        uses: actions/cache@v1.0.0 # github cache 액션 사용
         # node_modules 자체를 캐싱하는 것은 공식문서에서 추천하지 않았음
         # it can break across Node versions and won't work with npm ci
         with:
-         path: ~/.npm                                                                 # 캐시를 store하고 save하는 폴더. 저장하고 불러올 캐시 대상 폴더
-         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}          # 캐시를 복원하고 저장하기위한 명시적 키
-         restore-keys: |                                                              # (optional) 일치하는 캐시 key가 없을 때 차선으로 캐싱 폴더를 찾기 위한 key
-          ${{ runner.os }}-node-   
-      - name: ✔ npm install                                                             # step 이름
-        run: npm install                                                              # run을 통한 스크립트 실행 
-      - name: ✔ run jest
-        uses: stefanoeb/jest-action@1.0.0                                             # uses를 통한 외부설정 가져오기
-  slackNotification:                                                                  # 2번째 job
-    needs: [build]                                                                    # build job이 완료해야한다
+          path: ~/.npm # 캐시를 store하고 save하는 폴더. 저장하고 불러올 캐시 대상 폴더
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # 캐시를 복원하고 저장하기위한 명시적 키
+          restore-keys:
+            | # (optional) 일치하는 캐시 key가 없을 때 차선으로 캐싱 폴더를 찾기 위한 key
+            ${{ runner.os }}-node-
+      - name: npm install # step 이름
+        run: npm install # run을 통한 스크립트 실행
+      - name: run jest
+        uses: stefanoeb/jest-action@1.0.0 # uses를 통한 외부설정 가져오기
+  slackNotification: # 2번째 job
+    needs: [build] # build job이 완료해야한다
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Slack Notification
-      uses: rtCamp/action-slack-notify@master
-      env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        SLACK_CHANNEL: 16team
-        SLACK_USERNAME: mergeBot
-        SLACK_COLOR: good
-        SLACK_TITLE: Message
-        SLACK_MESSAGE: '한글 테스트'
+      - uses: actions/checkout@master
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_CHANNEL: 16team
+          SLACK_USERNAME: mergeBot
+          SLACK_COLOR: good
+          SLACK_TITLE: Message
+          SLACK_MESSAGE: "한글 테스트"
