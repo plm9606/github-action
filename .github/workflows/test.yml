@@ -1,15 +1,17 @@
-name: push test branch
+name: push test branch   # workflow 이름
 
-on:
+on:                     # 이벤트 감지
   push:
     branches:
       - test
 
-jobs:
-  build:
-    runs-on: [ubuntu-latest]
-    steps:
-      - name: npm install
-        run: npm install
+jobs:               # job 설정ㅇ
+  build:            # job id
+    runs-on: [ubuntu-latest]   # job 가상환경 인스턴스
+    steps:    
+      - name: checkout sorce code
+        uses: actions/checkout@test # uses를 통한 외부 설정 가져오기(githun 공식 checkout 액션 사용): 레포지토리 소스 받아오기
+      - name: npm install   # step 이름
+        run: npm install    # run을 통한 스크립트 실행 
       - name: run jest
-        uses: stefanoeb/jest-action@1.0.0
+        uses: stefanoeb/jest-action@1.0.0  # uses를 통한 외부설정 가져오기
