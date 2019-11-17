@@ -14,6 +14,7 @@ jobs:               # job 설정ㅇ
       - name: Cache node_modules
         uses: actions/cache@v1.0.0 # github cache 액션 사용
         # node_modules 자체를 캐싱하는 것은 공식문서에서 추천하지 않았음
+        # it can break across Node versions and won't work with npm ci
         with:
          path: ~/.npm # 캐시를 store하고 save하는 폴더. 저장하고 불러올 캐시 대상 폴더
          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }} # 캐시를 복원하고 저장하기위한 명시적 키
