@@ -1,0 +1,16 @@
+name: push test branch
+
+on:
+  push:
+    branches:
+      - test
+
+jobs:
+  build:
+    runs-on: [ubuntu-latest]
+    steps:
+      - uses: stefanoeb/jest-action@1.0.0
+      - name: jest
+        run: |
+          npm install
+          npm test
