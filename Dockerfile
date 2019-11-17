@@ -1,7 +1,6 @@
-FROM alpine:3.10
+FROM debian:9.6-slim
 
-RUN apk update && apk add curl
+RUN apt-get update && apt-get install -y curl
 
-COPY entrypoint.sh /entrypoint.sh
-
-ENTRYPOINT [ "/entrypoint.sh" ]
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
