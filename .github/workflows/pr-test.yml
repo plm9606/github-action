@@ -1,8 +1,8 @@
 name: PR test
 
-on: 
-  pull_request_review:
-    types: [ submitted, edited, dismissed]
+on:
+  pull_request:
+    types: [assigned, opened, synchronize, reopened]
     branches: 
       - master
       - develop
