@@ -18,12 +18,6 @@ jobs:
         run: npm install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
-      - name: Approve Pull Request
-        uses: juliangruber/approve-pull-request-action@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKENS }}
-          number: 1
-       # if: success()
       - name: merge PR
         uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
         env:
