@@ -2,7 +2,7 @@ name: PR test
 
 on: 
   pull_request_review:
-    types: [created, edited, deleted]
+    types: [ submitted, edited, dismissed]
     branches: 
       - master
       - develop
