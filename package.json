@@ -1,0 +1,26 @@
+{
+  "name": "github-action",
+  "version": "1.0.0",
+  "description": "github action을 활용한 CI/CD 학습",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/plm9606/github-action.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/plm9606/github-action/issues"
+  },
+  "homepage": "https://github.com/plm9606/github-action#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.15"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0"
+  }
+}
