@@ -2,7 +2,7 @@ name: PR test
 
 on: 
   pull_request_review_comment:
-    types: [created]
+    types: [created, edited, deleted]
     branches: 
       - master
       - develop
@@ -18,3 +18,9 @@ jobs:
         run: npm install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
+      - name: Approve Pull Request
+        uses: juliangruber/approve-pull-request-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          number: 1
+        if: success()
