@@ -8,7 +8,7 @@ on:
       - develop
 
 jobs:
-  Check test:
+  RunTest:
     name: Run Jest
     runs-on: [ubuntu-latest]
     steps:
