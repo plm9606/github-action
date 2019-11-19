@@ -7,7 +7,7 @@ on:
 #       - develop
 #       - test
   pull_request:
-    types: [assigned, opened, synchronize, reopened]
+    types: [assigned, opened, synchronize, reopened, labeled, closed]
     branches: 
       - master
       - develop
