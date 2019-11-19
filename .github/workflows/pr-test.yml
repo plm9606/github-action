@@ -24,6 +24,15 @@ jobs:
         run: npm install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
+      - name: merge PR if success test
+        uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            github.pulls.merge({
+              ...context.repo
+            })
+          if: success()
       - name: GitHub Script create issue
         uses: actions/github-script@0.3.0
         with:
@@ -35,13 +44,3 @@ jobs:
               body: '테스트가 실패하였습니다. '
               })
           if: failure()
-      - name: merge PR if success test
-        uses: actions/github-script@0.3.0
-        with:
-          github-token: ${{github.token}}
-          script: |
-            github.pulls.merge({
-              ...context.repo,
-              ...context.pull_number
-            })
-          if: success()
