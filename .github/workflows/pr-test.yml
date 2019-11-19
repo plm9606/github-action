@@ -1,16 +1,17 @@
 name: PR test
 
 on:
-  push:
-    branches: 
-      - master
-      - develop
-      - test
+#  push:
+#     branches: 
+#       - master
+#       - develop
+#       - test
   pull_request:
     types: [assigned, opened, synchronize, reopened]
     branches: 
       - master
       - develop
+      - test
 
 jobs:
   RunTest:
@@ -23,7 +24,23 @@ jobs:
         run: npm install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
-      - name: merge PR
-        uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
-        env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKENS }}"
+#       - name: merge PR
+#         uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
+#         env:
+#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKENS }}"
+      - name: GitHub Script create issue
+        uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{github.token}}
+#           scrpt: |
+#             octokit.pulls.merge({
+#               owner,
+#               repo,
+#               pull_number
+#             })
+          script: |
+              issues.create({
+              ...context.repo,
+              title: 'New issue!',
+              body: 'Hello Universe!'
+              })
