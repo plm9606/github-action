@@ -12,6 +12,8 @@ jobs:
       - name: gateway test      
         runs-on: [ubuntu-latest]
         steps:
+            - name: Checkout Devlop Branch
+              uses: actions/checkout@master
             - name: npm install
               run: |
                 cd ./src/gateway
