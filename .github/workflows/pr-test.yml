@@ -24,23 +24,24 @@ jobs:
         run: npm install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
-#       - name: merge PR
-#         uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
-#         env:
-#           GITHUB_TOKEN: "${{ secrets.GITHUB_TOKENS }}"
       - name: GitHub Script create issue
         uses: actions/github-script@0.3.0
         with:
           github-token: ${{github.token}}
-#           scrpt: |
-#             octokit.pulls.merge({
-#               owner,
-#               repo,
-#               pull_number
-#             })
           script: |
               github.issues.create({
               ...context.repo,
-              title: 'New issue!',
-              body: 'Hello Universe!'
+              title: 'Failed merge PR',
+              body: '테스트가 실패하였습니다. '
               })
+          if: failure()
+      - name: merge PR if success test
+        uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            github.pulls.merge({
+              ...context.repo,
+              ...context.pull_number
+            })
+          if: success()
