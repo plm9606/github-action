@@ -7,11 +7,20 @@ on:
 #       - develop
 #       - test
   pull_request:
-    types: [assigned, opened, synchronize, reopened, labeled, closed]
-    branches: 
-      - master
-      - develop
-      - test
+    types:
+      - labeled
+      - unlabeled
+      - synchronize
+      - opened
+      - edited
+      - ready_for_review
+      - reopened
+      - unlocked
+#     types: [assigned, opened, synchronize, reopened, labeled, closed]
+#     branches: 
+#       - master
+#       - develop
+#       - test
 
 jobs:
   RunTest:
