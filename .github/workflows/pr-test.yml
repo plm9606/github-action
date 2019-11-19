@@ -39,7 +39,7 @@ jobs:
 #               pull_number
 #             })
           script: |
-              issues.create({
+              github.issues.create({
               ...context.repo,
               title: 'New issue!',
               body: 'Hello Universe!'
