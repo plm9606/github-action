@@ -1,0 +1,13 @@
+name: issue comment
+on:
+  issues: {types: opened}
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@0.3.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            github.issues.createComment({...context.issue, body: '👋 Thanks for reporting!'})
