@@ -1,0 +1,30 @@
+language: node_js
+
+node_js:
+  - 12
+
+cache: npm
+
+services:
+  - docker
+
+branches:
+  only:
+    - master
+    - develop
+    - test
+
+jobs:
+  include:
+    - stage: "TEST"
+      name: "TEST1"
+      #before_install:
+       # - openssl aes-256-cbc -K $encrypted_d4aff414f791_key -iv $encrypted_d4aff414f791_iv -in env.tar.enc -out env.tar -d
+       #- tar xvf env.tar
+       # - cp .front.env ./front/.env
+       # - cd ./server/api-gateway
+      install:
+        - npm install
+      script:
+        - |
+            npm run test

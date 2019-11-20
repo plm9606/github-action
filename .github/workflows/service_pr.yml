@@ -1,0 +1,60 @@
+name: service PR Test
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - test
+
+jobs:
+  RunTest:
+    name: service PR Test
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+      - uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const refss = "${{github.ref}}"
+            console.log(typeof refss)
+            const pr_number = Number(refss.split("/")[2])
+            const reviews = await github.pulls.listReviews({
+              ...context.repo,
+              pull_number: pr_number
+            })
+            console.log(reviews.data.length)
+            if(reviews.data.length <= 0) throw('err')
+            else return true
+  Automerge:
+    name: automerge
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: start merge
+        uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
+        env:
+          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+          MERGE_LABELS: "automerge"
+          MERGE_COMMIT_MESSAGE: "automatic"
+        if: success()
+  SendSlack:
+    name: run slack bot
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@master
+        env:
+          SLACK_CHANNEL: general
+          SLACK_COLOR: "#3278BD"
+          SLACK_ICON: https://github.com/rtCamp.png?size=48
+          SLACK_MESSAGE: "PR Merge 성공! :rocket:"
+          SLACK_TITLE: Post Title
+          SLACK_USERNAME: mergeBot
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        if: success()
+        
