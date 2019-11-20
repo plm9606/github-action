@@ -18,14 +18,13 @@ jobs:
           npm test
       - name: test gateway
         run: |
-          
-          echo 1. ${{github.ref}}
-          echo 2. ${GITHUB_REF#refs/heads/}
-          if [ ${{github.ref}} == "log" ];
+          echo current branch is "${GITHUB_REF#refs/heads/}"
+          if [  ${GITHUB_REF#refs/heads/} == "service" ];
           then
             cd ./src/gateway
             npm install
             npm test
+          fi
 #       - name: get branch name
 #         run: echo running on branch ${GITHUB_REF##*/}
 #         with:
