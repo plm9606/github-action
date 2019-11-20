@@ -15,14 +15,14 @@ jobs:
       - name: test root
         run: |
           set root_dir=%cd%
-          myvar="$PWD"
-          echo root path is $myvar
+          echo %root_dir% > root_dir.txt
           npm install
           npm test
       - name: test gateway
         run: |
           echo %root_dir%
-          echo current branch is ${GITHUB_REF#refs/heads/} , $myvar
+          cat root_dir.txt
+          echo current branch is ${GITHUB_REF#refs/heads/}
           if [  ${GITHUB_REF#refs/heads/} == "service" ];
           then
             cd ./src/gateway
