@@ -32,6 +32,6 @@ jobs:
               ...context.repo,
               pull_number: pr_number
             })
-            console.log(reviews)
-            if(reviews.data.length <= 3) return false
+            console.log(reviews.data.length)
+            if(reviews.data.length <= 3) throw('err')
             else return true
