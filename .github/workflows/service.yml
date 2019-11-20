@@ -4,8 +4,8 @@ on:
     branches:
       - service
 jobs:
-  Servicetest:
-    name: Test gateway
+  test:
+    name: Test All Application
     runs-on: ubuntu-latest
     steps:
       - name: Setup Node Env
@@ -14,12 +14,12 @@ jobs:
           node-version: 10.16.0
       - name: Checkout Devlop Branch
         uses: actions/checkout@master
-      - name: test root
+      - name: test root node
         run: |
           npm install
           npm test
-      - name: test gateway
+      - name: Run Web Test Codes
         run: |
-          cd ./src/gateway
+          cd src/gateway
           npm install
           npm test
