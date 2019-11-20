@@ -21,16 +21,15 @@ jobs:
           echo ref is " ${{github.ref}} "
             npm install
             npm test
-       
-      #       - name: GitHub Script create issue
-      #         uses: actions/github-script@0.3.0
-      #         with:
-      #           github-token: ${{github.token}}
-      #           script: |
-      #               github.issues.create({
-      #               ...context.repo,
-      #               title: 'Failed merge PR ${{github.sha}}',
-      #               body: '테스트가 실패하였습니다. '
-      #               })
-      #           if: failure()
-
+      - uses: actions/github-script@0.2.0
+        with:
+          github-token: ${{github.token}}
+          script: |
+            const ref = github.ref
+            const pr_number = ref.split("/")[2]
+            octokit.issues.create({
+              ...context.repo,
+              title: `PR #${pr_number} test failed`,
+              body: 'test is failed. Please fix it.'
+              labels: ["Test Fail"]
+            });
