@@ -8,6 +8,12 @@ jobs:
     name: Test gateway
     runs-on: ubuntu-latest
     steps:
+      - name: Setup Node Env
+        uses: actions/setup-node@v1
+        with:
+          node-version: 10.16.0
+      - name: Checkout Devlop Branch
+        uses: actions/checkout@master
       - name: test root
         run: |
           npm install
