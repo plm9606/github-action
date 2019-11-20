@@ -27,10 +27,8 @@ jobs:
           script: |
             const refss = "${{github.ref}}"
             console.log(typeof refss)
-            const pr_number = refss.split("/")[2]
-            octokit.issues.create({
+            const pr_number = Number(refss.split("/")[2])
+            github.pulls.listReviews({
               ...context.repo,
-              title: `PR #${pr_number} test failed`,
-              body: 'test is failed. Please fix it.',
-              labels: ["Test Fail"]
-            });
+              pull_number: pr_number
+            })
