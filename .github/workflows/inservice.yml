@@ -10,7 +10,6 @@ jobs:
     name: service branch test1111
     runs-on: [ubuntu-latest]
     steps:
-      - id: test
       - name: checkout
         uses: actions/checkout@master
       - name: test root
