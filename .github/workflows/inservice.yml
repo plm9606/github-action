@@ -18,7 +18,7 @@ jobs:
           npm test
       - name: test gateway
         run: |
-          #echo 1. ${github.ref} // fiail
+          
           echo 1. ${{github.ref}}
           echo 2. ${GITHUB_REF#refs/heads/}
           if [ ${{github.ref}} == "log" ];
