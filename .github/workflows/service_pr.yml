@@ -36,7 +36,7 @@ jobs:
       - name: start merge
         uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
         env:
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKENS }}"
+          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
           MERGE_LABELS: "automerge"
           MERGE_COMMIT_MESSAGE: "automatic"
         if: success()
