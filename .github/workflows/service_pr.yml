@@ -25,7 +25,7 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            const refss = ${{github.ref}}
+            const refss = " ${{github.ref}} "
             console.log(${{github.ref}})
             console.log(typeof ${{github.ref}})
             const pr_number = refss.split("/")[2]
