@@ -5,4 +5,8 @@ function sum(a, b) {
 function double(a) {
   return a * 2;
 }
-module.exports = { sum, double };
+
+function sub(a, b) {
+  return a - b;
+}
+module.exports = { sum, double, sub };
