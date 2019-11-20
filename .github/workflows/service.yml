@@ -15,11 +15,11 @@ jobs:
       - name: Checkout Devlop Branch
         uses: actions/checkout@master
       - name: test root node
-        run: |
-          npm install
-          npm test
-      - name: Run Web Test Codes
-        run: |
-          cd src/gateway
-          npm install
-          npm test
+#         run: |
+#           npm install
+#           npm test
+#       - name: Run Web Test Codes
+#         run: |
+#           cd src/gateway
+#           npm install
+#           npm test
