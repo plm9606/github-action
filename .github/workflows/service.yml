@@ -1,7 +1,7 @@
-name: service test
+name: CI
 on:
   push:
-    branches:
+    branches: 
       - service
 jobs:
   test:
@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 10.16.0
       - name: Checkout Devlop Branch
-        uses: actions/checkout@master
+        uses: actions/checkout@v1
 #       - name: test root node
 #         run: |
 #           npm install
