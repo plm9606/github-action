@@ -25,8 +25,8 @@ jobs:
         with:
           github-token: ${{github.token}}
           script: |
-            const ref = github.ref
-            const pr_number = ref.split("/")[2]
+            const refss = github.ref
+            const pr_number = refss.split("/")[2]
             octokit.issues.create({
               ...context.repo,
               title: `PR #${pr_number} test failed`,
