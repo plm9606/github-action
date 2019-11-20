@@ -1,0 +1,36 @@
+name: service PR Test
+
+on:
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - service
+
+jobs:
+  RunTest:
+    name: service PR Test
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@master
+      - name: run service test
+        run: |
+          echo sha is ${{github.sha}}
+          echo base_ref is ${{github.base_ref}}
+          echo head_ref is ${{github.head_ref}}
+          echo ref is " ${{github.ref}} "
+            npm install
+            npm test
+       
+      #       - name: GitHub Script create issue
+      #         uses: actions/github-script@0.3.0
+      #         with:
+      #           github-token: ${{github.token}}
+      #           script: |
+      #               github.issues.create({
+      #               ...context.repo,
+      #               title: 'Failed merge PR ${{github.sha}}',
+      #               body: '테스트가 실패하였습니다. '
+      #               })
+      #           if: failure()
+
