@@ -14,10 +14,7 @@ jobs:
         uses: actions/checkout@master
       - name: test root
         run: |
-          set root_dir=%cd%
-          echo root_dir
-          echo %root_dir% > root_dir.txt
-          cat root_dir.txt
+          cd ~
           npm install
           npm test
       - name: test gateway
