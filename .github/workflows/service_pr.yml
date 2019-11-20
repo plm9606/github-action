@@ -30,6 +30,6 @@ jobs:
             octokit.issues.create({
               ...context.repo,
               title: `PR #${pr_number} test failed`,
-              body: 'test is failed. Please fix it.'
+              body: 'test is failed. Please fix it.',
               labels: ["Test Fail"]
             });
