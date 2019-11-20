@@ -33,3 +33,5 @@ jobs:
               pull_number: pr_number
             })
             console.log(reviews)
+            if(reviews.data.length <= 0) return false
+            else return true
