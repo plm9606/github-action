@@ -44,8 +44,6 @@ jobs:
     name: run slack bot
     runs-on: [ubuntu-latest]
     steps:
-      - name: checkout repo
-        uses: actions/checkout@master
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@master
         env:
