@@ -22,7 +22,7 @@ jobs:
           echo current branch is "$ {GITHUB_REF#refs/heads/} " ${myvar}
           if [  ${GITHUB_REF#refs/heads/} == "service" ];
           then
-            cd /src/gateway
+            cd ./src/gateway
             npm install
             npm test
           fi
