@@ -15,9 +15,16 @@ jobs:
       - name: test root
         run: |
           set root_dir=%cd%
+          echo %root_dir%
           echo %root_dir% > root_dir.txt
+          cat root_dir.txt
           npm install
           npm test
+      - name: Upload math result for job 1
+        uses: actions/upload-artifact@v1
+        with:
+          name: homework
+          path: math-homework.txt
       - name: test gateway
         run: |
           echo %root_dir%
