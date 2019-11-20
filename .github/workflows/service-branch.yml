@@ -3,6 +3,7 @@ on:
   push:
     branches: 
       - service
+      - test
 jobs:
   test:
     name: service branch test
