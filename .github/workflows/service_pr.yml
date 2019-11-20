@@ -28,7 +28,8 @@ jobs:
             const refss = "${{github.ref}}"
             console.log(typeof refss)
             const pr_number = Number(refss.split("/")[2])
-            github.pulls.listReviews({
+            const reviews = await github.pulls.listReviews({
               ...context.repo,
               pull_number: pr_number
             })
+            console.log(reviews)
