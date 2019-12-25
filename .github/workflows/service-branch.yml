@@ -1,0 +1,13 @@
+name: service test
+on: 
+  push:
+    branches: 
+      - service
+      - test
+jobs:
+  test:
+    name: service branch test
+    runs-on: [ubuntu-latest]
+    steps:
+      - name: checkout
+        uses: actions/checkout@master
