@@ -1,3 +1,4 @@
+name: TEST CUSTOM ACTIONS
 on: push
 
 jobs:
