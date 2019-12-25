@@ -103,43 +103,8 @@ function getRoomData(room, partner_id) {
   return data;
 }
 
-getData("도곡 스터디");
-
 const makeRandomBetween = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 };
-
-// fs.readFile("gn_study.json", "utf-8", (err, result) => {
-//   if (err) throw err;
-//   const json = JSON.parse(result);
-
-//   parsedJSON = json.map(room => {
-//     const { title, link, roadAddress, mapx, mapy } = room;
-
-//     const data = {
-//       partner_id: partnerID[makeRandomBetween(0, partnerID.length - 1)],
-//       cafe_name: title,
-//       name: `${makeRandomBetween(100, 200)}호`,
-//       location: {
-//         type: "Point",
-//         coordinates: [mapy, mapx]
-//       },
-//       images: [imagesArray[makeRandomBetween(0, imagesArray.length - 1)]],
-//       price: makeRandomBetween(1500, 5000),
-//       min_personnel: makeRandomBetween(1, 4),
-//       max_personnel: makeRandomBetween(5, 12),
-//       description: `주소: ${roadAddress}\n 링크: ${link}`,
-//       open_time: makeRandomBetween(6, 12),
-//       close_time: makeRandomBetween(15, 23)
-//     };
-
-//     return data;
-//   });
-
-//   fs.writeFile("gn_study_parsed.json", JSON.stringify(parsedJSON), err => {
-//     if (err) throw err;
-//     console.log(`저장 완료`);
-//   });
-// });
 
 module.exports = getData;
