@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <!-- 네이버 지도-->
+    <script
+      type="text/javascript"
+      src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=orrqch0s16&submodules=geocoder"
+    ></script>
+  </head>
+  <body>
+    <div id="map" style="width:100%;height:100%;"></div>
+    <script>
+      var latlng = new naver.maps.Point(314258, 544500);
+      var naverCoord = naver.maps.TransCoord.fromTM128ToLatLng(latlng);
+      // console.log(latlng.toString(), naverCoord.lat());
+      const data = [];
+
+      const convert = data.map(item => {
+        const x = item.location.coordinates[1];
+        const y = item.location.coordinates[0];
+        var naverCoord = new naver.maps.Point(x, y);
+        var latlng = naver.maps.TransCoord.fromTM128ToLatLng(naverCoord);
+        return {
+          ...item,
+          location: {
+            type: "Point",
+            coordinates: [latlng.lng(), latlng.lat()]
+          }
+        };
+      });
+
+      console.log(convert);
+
+      const div = document.querySelector("#map");
+      div.innerText = JSON.stringify(convert);
+    </script>
+  </body>
+</html>
