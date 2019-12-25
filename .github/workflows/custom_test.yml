@@ -7,6 +7,6 @@ jobs:
     steps:
     - name: Hello world action step
       id: hello
-      uses: $plm9606/automerge_actions@master
+      uses: plm9606/automerge_actions@master
       with:
         who-to-greet: 'Mona the Octocat'
