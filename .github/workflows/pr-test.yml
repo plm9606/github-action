@@ -7,7 +7,7 @@ on:
 #       - develop
 #       - test
   pull_request:
-    types: [assigned, opened, reopened, labeled, closed]
+    types: [assigned, opened]
 #     branches: 
 #       - master
 #       - develop
@@ -44,9 +44,9 @@ jobs:
               body: '테스트가 실패하였습니다. '
               })
           if: failure()
-      - name: automerge
-        uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
-        env:
-          GITHUB_TOKEN: "${{ secrets.TOKEN }}"
-          MERGE_LABELS: "automerge"
-          MERGE_COMMIT_MESSAGE: "automatic"
+#       - name: automerge
+#         uses: "pascalgn/automerge-action@733fcc62d711705eae9cd66fcf49c93c1d1a98c6"
+#         env:
+#           GITHUB_TOKEN: "${{ secrets.TOKEN }}"
+#           MERGE_LABELS: "automerge"
+#           MERGE_COMMIT_MESSAGE: "automatic"
