@@ -1,0 +1,22 @@
+name: TEST CUSTOM ACTIONS
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    types: [opened, reopened, labeled]
+    branches: 
+      - master
+
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+    - name: Hello world action step
+      id: hello
+      uses: plm9606/automerge_actions@master
+      with:
+        label-name: 'Test'
+        github-token: ${{ secrets.TOKEN }}
