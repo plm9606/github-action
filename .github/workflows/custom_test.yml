@@ -1,5 +1,13 @@
 name: TEST CUSTOM ACTIONS
-on: [push]
+on: 
+  push:
+    branches: 
+      - master
+  pull_request:
+    types: [opened, reopened, labeled]
+    branches: 
+      - master
+
 
 jobs:
   hello_world_job:
@@ -10,4 +18,5 @@ jobs:
       id: hello
       uses: plm9606/automerge_actions@master
       with:
-        who-to-greet: 'JS actions'
+        label-name: 'Test'
+        github-token: ${{ secrets.TOKEN }}
