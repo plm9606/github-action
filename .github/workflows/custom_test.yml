@@ -1,5 +1,5 @@
 name: TEST CUSTOM ACTIONS
-on: push
+on: [push]
 
 jobs:
   hello_world_job:
@@ -10,4 +10,4 @@ jobs:
       id: hello
       uses: plm9606/automerge_actions@master
       with:
-        who-to-greet: 'Mona the Octocat'
+        who-to-greet: 'JS actions'
