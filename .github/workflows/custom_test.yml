@@ -19,3 +19,4 @@ jobs:
       uses: plm9606/automerge_actions@master
       with:
         who-to-greet: 'JS actions'
+        github-token: ${{ secrets.TOKEN }}
