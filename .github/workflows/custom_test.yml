@@ -19,4 +19,7 @@ jobs:
       uses: plm9606/automerge_actions@master
       with:
         label-name: 'Test'
+        merge-method: 'squash'
+        reviewers-number: '2'
+        auto-delete: 'true'
         github-token: ${{ secrets.TOKEN }}
