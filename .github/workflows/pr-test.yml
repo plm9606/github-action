@@ -21,7 +21,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@master
       - name: npm install
-        run: npm install
+        run: yarn plugin import workspace-tools && yarn install
       - name: Run Jest
         uses: stefanoeb/jest-action@1.0.0
 #       - name: merge PR if success test
