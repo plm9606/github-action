@@ -23,7 +23,7 @@
     "express": "^4.17.1",
     "kind-of": ">=6.0.3",
     "lodash": "^4.17.15",
-    "minimist": ">=1.2.3"
+    "minimist": ">=1.2.6"
   },
   "devDependencies": {
     "jest": "^24.9.0"
