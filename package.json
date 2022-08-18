@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/plm9606/github-action#readme",
   "dependencies": {
-    "@actions/core": "^1.2.0",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^1.1.0",
     "acorn": ">=5.7.4",
     "express": "^4.17.1",
